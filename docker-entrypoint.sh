@@ -15,11 +15,7 @@ echo >&2 "[INFO] ---------------------------------------------------"
 tar -zcvf /var/backup/pydio/pydio-v$(date '+%Y%m%d%H%M%S').tar.gz .
 echo >&2 "[INFO] Complete! Backup successfully done in $(pwd)"
 
-# Since pydio can be upgraded by overwriting files do the upgrade !
-# @see https://github.com/thibaud-rohmer/PhotoShow/
-# 
-# File copy strategy taken from wordpress entrypoint
-# @see https://github.com/docker-library/wordpress/blob/master/fpm/docker-entrypoint.sh
+# Upgrade
 echo >&2 "[INFO] ---------------------------------------------------"
 echo >&2 "[INFO] Installing or upgrading pydio in $(pwd)"
 echo >&2 "[INFO] ---------------------------------------------------"
