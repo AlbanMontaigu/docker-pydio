@@ -24,6 +24,10 @@ RUN mkdir -p --mode=777 /var/backup/pydio \
         --exclude=.htaccess \
     && rm pydio.tgz \
     && chown -Rfv nginx:nginx /usr/src/pydio
+    && echo "" >> /usr/local/etc/php-fpm.conf \
+    && echo "; You should disable php output_buffering parameter for better performances with Pydio " >> /usr/local/etc/php-fpm.conf \
+    && echo "output_buffering = off" >> /usr/local/etc/php-fpm.conf \
+    && sed -i -e "s%//define(\"AJXP_LOCALE\", \"en_EN.UTF-8\");%define(\"AJXP_LOCALE\", \"en_EN.UTF-8\");%g" /usr/src/pydio/conf/bootstrap_conf.php \
 
 # NGINX tuning for pydio
 COPY ./nginx/conf/sites-enabled/default.conf /etc/nginx/sites-enabled/default.conf
