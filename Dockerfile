@@ -25,6 +25,9 @@ RUN mkdir -p --mode=777 /var/backup/pydio \
     && rm pydio.tgz \
     && chown -Rfv nginx:nginx /usr/src/pydio \
     && sed -i -e "s%output_buffering = 4096%output_buffering = Off%g" $PHP_INI_DIR/php.ini \
+    && sed -i -e "s%max_execution_time = 60%max_execution_time = 14400%g" $PHP_INI_DIR/php.ini \
+    && sed -i -e "s%post_max_size = 8M%post_max_size = 1G%g" $PHP_INI_DIR/php.ini \
+    && sed -i -e "s%upload_max_filesize = 2M%upload_max_filesize = 1G%g" $PHP_INI_DIR/php.ini \
     && sed -i -e "s%//define(\"AJXP_LOCALE\", \"en_EN.UTF-8\");%define(\"AJXP_LOCALE\", \"en_EN.UTF-8\");%g" /usr/src/pydio/conf/bootstrap_conf.php
 
 # NGINX tuning for pydio
