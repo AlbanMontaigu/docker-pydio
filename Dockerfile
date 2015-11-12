@@ -13,7 +13,7 @@ FROM amontaigu/nginx-php-plus:5.6.14
 MAINTAINER alban.montaigu@gmail.com
 
 # Pydio env variables
-ENV PYDIO_VERSION="6.0.8"
+ENV PYDIO_VERSION="6.2.0"
 
 # Get Pydio and install it
 RUN mkdir -p --mode=777 /var/backup/pydio \
