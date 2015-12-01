@@ -12,12 +12,17 @@ FROM amontaigu/nginx-php-plus:5.6.14
 # Maintainer
 MAINTAINER alban.montaigu@gmail.com
 
-# Pydio env variables
-ENV PYDIO_VERSION="6.2.0"
+# Environment configuration
+ENV DEBIAN_FRONTEND="noninteractive" \
+    PYDIO_VERSION="6.2.0"
+
+# Environment configuration
+RUN apt-get update \
+    && apt-get install -y unzip \
+    && rm -r /var/lib/apt/lists/*
 
 # Get Pydio and install it
-RUN apt-get install -y unzip \
-    && mkdir -p --mode=777 /var/backup/pydio \
+RUN mkdir -p --mode=777 /var/backup/pydio \
     && mkdir -p --mode=777 /usr/src/pydio \
     && curl -o pydio.zip -SL http://heanet.dl.sourceforge.net/project/ajaxplorer/pydio/stable-channel/$PYDIO_VERSION/pydio-core-$PYDIO_VERSION.zip \
     && unzip pydio.zip \
