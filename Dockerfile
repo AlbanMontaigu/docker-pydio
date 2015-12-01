@@ -18,11 +18,10 @@ ENV PYDIO_VERSION="6.2.0"
 # Get Pydio and install it
 RUN mkdir -p --mode=777 /var/backup/pydio \
     && mkdir -p --mode=777 /usr/src/pydio \
-    && curl -o pydio.tgz -SL https://github.com/pydio/pydio-core/archive/pydio-core-$PYDIO_VERSION.tar.gz \
-    && tar -xzf pydio.tgz --strip-components=3 -C /usr/src/pydio pydio-core-pydio-core-$PYDIO_VERSION/core/src \
-        --exclude=.gitignore \
-        --exclude=.htaccess \
-    && rm pydio.tgz \
+    && curl -o pydio.zip -SL http://heanet.dl.sourceforge.net/project/ajaxplorer/pydio/stable-channel/$PYDIO_VERSION/pydio-core-$PYDIO_VERSION.zip \
+    && unzip pydio.zip \
+    && mv -f pydio-core-$PYDIO_VERSION/* /usr/src/pydio \
+    && rm -rvf pydio* \
     && chown -Rfv nginx:nginx /usr/src/pydio \
     && sed -i -e "s%output_buffering = 4096%output_buffering = Off%g" $PHP_INI_DIR/php.ini \
     && sed -i -e "s%max_execution_time = 60%max_execution_time = 14400%g" $PHP_INI_DIR/php.ini \
