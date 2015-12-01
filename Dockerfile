@@ -16,7 +16,8 @@ MAINTAINER alban.montaigu@gmail.com
 ENV PYDIO_VERSION="6.2.0"
 
 # Get Pydio and install it
-RUN mkdir -p --mode=777 /var/backup/pydio \
+RUN apt-get install -y unzip \
+    && mkdir -p --mode=777 /var/backup/pydio \
     && mkdir -p --mode=777 /usr/src/pydio \
     && curl -o pydio.zip -SL http://heanet.dl.sourceforge.net/project/ajaxplorer/pydio/stable-channel/$PYDIO_VERSION/pydio-core-$PYDIO_VERSION.zip \
     && unzip pydio.zip \
