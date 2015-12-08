@@ -14,7 +14,7 @@ MAINTAINER alban.montaigu@gmail.com
 
 # Environment configuration
 ENV DEBIAN_FRONTEND="noninteractive" \
-    PYDIO_VERSION="6.2.0"
+    PYDIO_VERSION="6.2.1"
 
 # Environment configuration
 RUN apt-get update \
