@@ -26,7 +26,7 @@ RUN mkdir -p --mode=777 /var/backup/pydio \
     && mkdir -p --mode=777 /usr/src/pydio \
     && curl -o pydio.zip -SL https://github.com/pydio/pydio-core/archive/pydio-core-$PYDIO_VERSION.zip \
     && unzip pydio.zip \
-    && mv -f pydio-core-pydio-core-$PYDIO_VERSION/* /usr/src/pydio \
+    && mv -f pydio-core-pydio-core-$PYDIO_VERSION/core/src/* /usr/src/pydio \
     && rm -rvf pydio* \
     && chown -Rfv nginx:nginx /usr/src/pydio \
     && sed -i -e "s%output_buffering = 4096%output_buffering = Off%g" $PHP_INI_DIR/php.ini \
