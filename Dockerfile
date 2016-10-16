@@ -14,7 +14,7 @@ MAINTAINER alban.montaigu@gmail.com
 
 # Environment configuration
 ENV DEBIAN_FRONTEND="noninteractive" \
-    PYDIO_VERSION="6.4.1"
+    PYDIO_VERSION="6.5.5"
 
 # Environment configuration
 RUN apt-get update \
@@ -24,7 +24,7 @@ RUN apt-get update \
 # Get Pydio and install it
 RUN mkdir -p --mode=777 /var/backup/pydio \
     && mkdir -p --mode=777 /usr/src/pydio \
-    && curl -o pydio.zip -SL http://heanet.dl.sourceforge.net/project/ajaxplorer/pydio/stable-channel/$PYDIO_VERSION/pydio-core-$PYDIO_VERSION.zip \
+    && curl -o pydio.zip -SL https://github.com/pydio/pydio-core/archive/pydio-core-$PYDIO_VERSION.zip \
     && unzip pydio.zip \
     && mv -f pydio-core-$PYDIO_VERSION/* /usr/src/pydio \
     && rm -rvf pydio* \
