@@ -1,4 +1,7 @@
 
+## 7.0.3 (2017-01-02)
+- Update to pydio 7.0.3
+
 ## 6.4.2 (2016-10-17)
 - Update to amontaigu/nginx-php-plus:5.6.27
 
